@@ -1,7 +1,7 @@
-import { ConnectableObservable } from 'rx';
+// import { ConnectableObservable } from 'rx';
 
 //Dependencies
-const mySQL = require('mySQL');
+const mysql = require('mysql');
 const inquirer = require('inquirer');
 
 function Bamazon() {
@@ -27,31 +27,41 @@ function Bamazon() {
     });
 
     function storefrontDatabase() {
-        ConnectableObservable.query('SELECT * FROM products', function(err, inventory) {
-            if (err) throw err;
+        connection.query('SELECT * FROM products', function(err, inventory) {
+                if (err) throw err;
 
-            console.log('Data received from the "Bamazon" database:\n');
+                console.log('Data received from the "Bamazon" database:\n');
 
-            var selectedID = [];
-            var stock = [];
-            var cost = [];
+                var selectedID = [];
+                var stock = [];
+                var cost = [];
 
-            for (var i = 0; i < inventory.length; i++) {
-                console.log(inventory[i].itemID + " | " + inventory[i].departmentName);
-                console.log(separator);
-                console.log(" product name =" + inventory[i].productName);
-                console.log(" price per unit =" + inventory[i].price);
-                console.log(" quantity in stock =" + inventory[i].stockQuantity);
-                console.log('');
-                //
+                for (var i = 0; i < inventory.length; i++) {
+                    console.log(inventory[i].itemID + " | " + inventory[i].departmentNAME);
+                    // console.log(separator);
+                    console.log(" product name = " + inventory[i].productNAME);
+                    console.log(" price per unit = " + inventory[i].price);
+                    console.log(" quantity in stock = " + inventory[i].stockQuantity);
+                    console.log('');
+                    //
+
+                };
+
+                function update() {
+                    connection.query('UPDATE * FROM products', function(err, inventory) {
+                            if (err) throw err;
+                        }
+
+                    })
+                connection.end();
             }
-        })
-    }
 
 
 
 
 
+            storefrontDatabase();
 
+        }; //end of Bamazon wrapper function
 
-} //end of Bamazon wrapper function
+        Bamazon();

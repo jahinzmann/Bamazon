@@ -19,31 +19,31 @@ CREATE TABLE departments (
     constraint PRIMARY KEY (departmentID)
     );
     
-INSERT INTO products (productName, departmentName, price stockQuantity)
-	values ('The Gulag Archipelago', 'books' 19.99, 10);
-INSERT INTO products (productName, departmentName, price stockQuantity)
+INSERT INTO products (productName, departmentName, price, stockQuantity)
+	values ('The Gulag Archipelago', 'books', 19.99, 10);
+INSERT INTO products (productName, departmentName, price, stockQuantity)
 	values ('Valerian and the City of A Thousand Planets', 'movies', 19.99, 10);
-INSERT INTO products (productName, departmentName, price stockQuantity)
-	values ();
-INSERT INTO products (productName, departmentName, price stockQuantity)
-	values ();
-INSERT INTO products (productName, departmentName, price stockQuantity)
-	values ();
-INSERT INTO products (productName, departmentName, price stockQuantity)
-	values ();
-INSERT INTO products (productName, departmentName, price stockQuantity)
-	values ();
-INSERT INTO products (productName, departmentName, price stockQuantity)
-	values ();
-INSERT INTO products (productName, departmentName, price stockQuantity)
-	values ();
+INSERT INTO products (productName, departmentName, price, stockQuantity)
+	values ('Gevalia Deluxe Coffee Maker', 'housewares', '59.99', 10);
+INSERT INTO products (productName, departmentName, price, stockQuantity)
+	values ('BioShock Infinite','Video Games' , 20.00, 30);
+INSERT INTO products (productName, departmentName, price, stockQuantity)
+	values ('Lenovo Flex Laptop','Electronics', 599.99, 25);
+INSERT INTO products (productName, departmentName, price, stockQuantity)
+	values ('','' , ,);
+INSERT INTO products (productName, departmentName, price, stockQuantity)
+	values ('','' , ,);
+INSERT INTO products (productName, departmentName, price, stockQuantity)
+	values ('','' , ,);
+INSERT INTO products (productName, departmentName, price, stockQuantity)
+	values ('','' , ,);
     
 INSERT INTO departments (departmentName, overheadCosts, totalSales)
 	values ('books', 10.00, 20);
 INSERT INTO departments (departmentName, overheadCosts, totalSales)
-	values ();
+	values ('movies', 300.00, 68);
 INSERT INTO departments (departmentName, overheadCosts, totalSales)
-	values ();
+	values ('housewares', 6000.00, 315);
 INSERT INTO departments (departmentName, overheadCosts, totalSales)
 	values ();
 			
