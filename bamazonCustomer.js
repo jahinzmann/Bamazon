@@ -42,21 +42,53 @@ function Bamazon() {
                     console.log(" product name = " + inventory[i].productNAME);
                     console.log(" price per unit = " + inventory[i].price);
                     console.log(" quantity in stock = " + inventory[i].stockQuantity);
-                    console.log('');
+                    // console.log('');
                     //
-
+                    selectedID.push("" + inventory[i].itemID);
+                    stock.push("" + invetory[i].stockQuantity);
+                    cost.push("" + inventory[i].price);
                 };
+                //call selection function here:
+                //Pass in ID, stock, and cost
+                selection(selectedID, stock, cost);
+                
+            }); //end of connector.query
 
-                function update() {
-                    connection.query('UPDATE * FROM products', function(err, inventory) {
-                            if (err) throw err;
-                        }
+            } //end of storefront.database
 
-                    })
-                connection.end();
+        function selection(options, quantities, price) {
+
+            inquirer.prompt([{
+                type: "list",
+                name: "option",
+                message: "What is the itemID of the product you would like to purchase?",
+                choices: options
+            },{
+                type: "input",
+                message: "What quantity of the selected product do you want?",
+                name: "quantity"
             }
+            ]).then(function(choices){
+                var index = choices.option -1;
+                var total = choices.quantity * price[index];
+                console.log("You have selected" + options[index]);
+                console.log("There are" + quantities[index] + "of this item available");
+                console.log("You have selected" + choices.quantity + "of this item");
+                
+                if(parseInt(choices.quantity) > parseInt(quantities[index])){
+                    console.log("You can't buy blood from a stone");
+                    connection.end();
+                } else {
+                    choices.quantity = quantities[index] - choices.quantity;
+                    console.log("You are purchasing"+ choices.quantity + "of this item");
+                    //inventoryUpdate(choices);
+                }
 
+            }); //end of .then function
 
+            
+//update function goes here
+        }
 
 
 
